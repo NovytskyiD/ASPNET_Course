@@ -1,0 +1,42 @@
+﻿@model OnlineShopWeb.Models.UserViewModel
+<form method="post">
+    @if (Model==null)
+    {
+        <div class="row">
+            <div class="col-6">
+                <h3>Необходимо войти в учетную запись</h3>
+            </div>
+
+        </div>
+        <button class="btn bg-secondary" asp-area="" asp-controller="Account" asp-action="Login" type="submit">Войти</button>
+    }
+    else
+    {
+<div class="row">
+    <div class="col-6">
+        <div class="col-6">
+            <table class="table">
+                <tr>
+                    <td>Логин (email)</td>
+                    <td>@Model.UserName</td>
+                </tr>
+                <tr>
+                    <td>Имя пользователя</td>
+                    <td>@Model.FirstName</td>
+                </tr>
+                <tr>
+                    <td>Фамилия пользователя</td>
+                    <td>@Model.LastName</td>
+                </tr>
+                <tr>
+                    <td>Телефон</td>
+                    <td>@Model.Phone</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+</div>
+        <button class="btn bg-secondary" asp-area="" asp-controller="Account" asp-action="Logout" type="submit">Выйти</button>
+    }
+</form>

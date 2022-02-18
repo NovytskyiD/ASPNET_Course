@@ -1,0 +1,31 @@
+﻿@model OnlineShopWeb.Models.Login
+<form method="post">
+
+    <div class="row text-center">
+        <div class="text-danger font-weight-bold" asp-validation-summary="All"></div>
+        <input type="hidden" name="returnURL" value="@Model.ReturnURL" />
+        <div class="col">
+            <div>
+                <label asp-for="UserName">Логин (email)</label><br />
+                <input type="text" asp-for="UserName" />
+                <span asp-validation-for="UserName" />
+            </div>
+            <div>
+                <label asp-for="Password">Пароль</label><br />
+                <input type="text" asp-for="Password" />
+                <span asp-validation-for="Password" />
+            </div>
+            <div class="form-check">
+                @Html.EditorFor(x => x.RememberMe)
+                <label for="RememberMe">
+                    Запомнить меня?
+                </label>
+            </div>
+            <button class="btn btn-success" type="submit" asp-area="" asp-controller="Account" asp-action="Login">Войти</button>
+
+            <br />
+            <a asp-area="" asp-controller="Account" asp-action="Register" asp-route-returnUrl="@Model.ReturnURL">Регистрация нового пользователя</a>
+
+        </div>
+    </div>
+</form>

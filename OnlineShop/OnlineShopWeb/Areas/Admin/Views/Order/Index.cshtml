@@ -1,0 +1,37 @@
+﻿@model List<OrderViewModel>
+@using EnumDescription;
+<div class="row">
+    <div class="col-3">
+        @await Html.PartialAsync("AdminLeftMenu")
+    </div>
+    <div class="col-9">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Сумма</th>
+                    <th scope="col">Статус</th>
+                    <th scope="col">Пользователь</th>
+                    <th scope="col">Дата</th>
+                    <th scope="col">Время</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.Count; i++)
+                {
+                    <tr>
+                        <th scope="row">@(i + 1)</th>
+                        <td>@Model[i].Cost</td>
+                        <td>@EnumHelper.GetDisplayName(Model[i].OrderState)</td>
+                        <td>@Model[i].OrderShippingDetails.Email</td>
+                        <td>@Model[i].CreateTime.ToShortDateString()</td>
+                        <td>@Model[i].CreateTime.ToShortTimeString()</td>
+                        <td><a asp-area="Admin" asp-controller="Order" asp-action="Edit" asp-route-orderId="@Model[i].Id">Редактировать</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>

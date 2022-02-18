@@ -1,0 +1,63 @@
+﻿@model UserViewModel
+<form method="post">
+	<div class="row">
+		<div class="col-6">
+			<h3>Пользователь @Model.UserName</h3>
+			<table class="table">
+				<tr>
+					<td>Имя</td>
+					<td>@Model.FirstName</td>
+				</tr>
+				<tr>
+					<td>Фамилия</td>
+					<td>@Model.LastName</td>
+				</tr>
+				<tr>
+					<td>Email (Логин)</td>
+					<td>@Model.UserName</td>
+				</tr>
+				<tr>
+					<td>Номер телефона</td>
+					<td>@Model.Phone</td>
+				</tr>
+			</table>
+
+			<div class="text-right">
+				<div class="dropdown show">
+					<a class="btn btn-success dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Действия
+					</a>
+
+					<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+						<a class="dropdown-item" asp-area="Admin" asp-controller="User" asp-action="ChangePassword" asp-route-userName="@Model.UserName">Смена пароля</a>
+						<a class="dropdown-item" asp-area="Admin" asp-controller="User" asp-action="Edit" asp-route-userName="@Model.UserName">Редактирование данных</a>
+						<a class="dropdown-item" asp-area="Admin" asp-controller="User" asp-action="SetUserRoles" asp-route-userName="@Model.UserName">Права доступа</a>
+						<a class="dropdown-item" href="#" data-toggle="modal" data-target="#confirmDeleteModalCenter">Удалить пользователя</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Modal -->
+	<div class="modal fade" id="confirmDeleteModalCenter" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalCenterTitle" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="confirmDeleteModalCenterTitle">Вы точно хотите удалить пользователя?</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<h3>Отменить это действие будет невозможно!</h3>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Нет</button>
+					<button type="submit" class="btn btn-primary" asp-area="Admin" asp-controller="User" asp-action="Delete" asp-route-userName="@Model.UserName">Да</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</form>

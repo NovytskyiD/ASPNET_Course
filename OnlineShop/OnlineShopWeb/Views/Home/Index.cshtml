@@ -1,0 +1,19 @@
+﻿@model List<ProductViewModel>
+
+@{
+    ViewData["Title"] = "View";
+}
+
+<div class="row">
+
+	@await Html.PartialAsync("SearchInput")
+</div>
+
+<br />
+
+<div class="row">
+
+	@await Html.PartialAsync("Products", Model)
+
+
+</div>

@@ -1,0 +1,66 @@
+﻿@model ProductCompareViewModel
+
+
+<div class="row">
+	<div class="col">
+		@if (Model == null || Model.products.Count < 2)
+		{
+			<h5>Добавьте 2 и больше товара для сравнения</h5>
+		}
+
+		else
+		{ <table class="table" >
+				<thead>
+					<tr>
+						<th scope="col"></th>
+						@for (int i = 0; i < Model.products.Count; i++)
+						{
+							<th scope="col"><img class="img-fluid" src="@Model.products[i].ImagePath" /></th>
+						}
+
+					</tr>
+				</thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Наименование</th>
+                        @for (int i = 0; i < Model.products.Count; i++)
+                        {
+                            <td>@Model.products[i].Name</td>
+
+                        }
+                    </tr>
+                    <tr>
+                        <th scope="row">Описание</th>
+                        @for (int i = 0; i < Model.products.Count; i++)
+                        {
+                            <td>@Model.products[i].Descriprion</td>
+
+                        }
+                    </tr>
+                    <tr>
+                        <th scope="row">Цена</th>
+                        @for (int i = 0; i < Model.products.Count; i++)
+                        {
+                            <td>@Model.products[i].Descriprion</td>
+
+                        }
+                    </tr>
+
+                    <tr>
+                        <th scope="row"></th>
+                        @for (int i = 0; i < Model.products.Count; i++)
+                        {
+                            
+                            <td><a class="btn shadow-sm" asp-area="" asp-controller="Compare" asp-action="Delete" asp-route-productid="@Model.products[i].Id" role="button">Удалить из сравнения</a></td>
+                        }
+                    </tr>
+
+                </tbody>
+			</table>
+			
+
+		}
+
+	</div>
+
+</div>

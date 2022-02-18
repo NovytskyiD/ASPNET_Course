@@ -1,0 +1,26 @@
+﻿@model List<ProductViewModel>
+
+@{
+	ViewData["Title"] = "View";
+}
+
+<div class="row">
+
+	@await Html.PartialAsync("SearchInput")
+</div>
+
+<br />
+
+<div class="row">
+	@if (Model == null || Model.Count == 0)
+	{
+		<h5>Ничего не найдено</h5>
+	}
+	else
+	{
+		@await Html.PartialAsync("Products",Model)
+
+	}
+
+
+</div>

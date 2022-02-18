@@ -1,0 +1,26 @@
+﻿@model ProductViewModel
+
+<form method="post">
+    <div class="text-danger font-weight-bold" asp-validation-summary="All"></div>
+    <p>
+        <label asp-for="Name">Название товара</label><br />
+        <input type="text" asp-for="Name" />
+        <span asp-validation-for="Name" />
+
+    </p>
+
+    <p>
+        <label asp-for="Cost">Стоимость</label><br />
+        <input type="text" asp-for="Cost" />
+        <span asp-validation-for="Cost" />
+    </p>
+
+    <p>
+        <label asp-for="Descriprion">Описание</label><br />
+        <input type="text" asp-for="Descriprion" />
+        <span asp-validation-for="Descriprion" />
+    </p>
+    <br />
+    <button class="btn btn-success" type="submit" asp-area="Admin" asp-controller="Product" asp-action="Add">Сохранить</button>
+
+</form>

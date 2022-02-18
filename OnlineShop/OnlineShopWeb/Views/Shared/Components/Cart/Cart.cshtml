@@ -1,0 +1,15 @@
+﻿@model int
+
+@if (Model == 0)
+{
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Cart" asp-action="Index"><img src="~/img/card_empty.svg" /> Корзина </a>
+    </li>
+
+}
+else
+{
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Cart" asp-action="Index"><img src="~/img/full_cart.svg" /> Корзина @Model</a>
+    </li>
+}

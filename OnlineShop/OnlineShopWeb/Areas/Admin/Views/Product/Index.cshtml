@@ -1,0 +1,42 @@
+﻿@model List<ProductViewModel>
+
+<div class="row">
+    <div class="col-3">
+        @await Html.PartialAsync("AdminLeftMenu")
+    </div>
+    <div class="col-9">
+        <table class="table">
+            <thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Название</th>
+					<th scope="col">Цена</th>
+					<th scope="col">Описание</th>
+					<th scope="col">Token</th>
+					<th scope="col"></th>
+					<th scope="col"></th>
+					<th scope="col"></th>
+				</tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.Count; i++)
+                {
+				<tr>
+					<th scope="row">@(i + 1)</th>
+					<td>@Model[i].Name</td>
+					<td>@Model[i].Cost</td>
+					<td>@Model[i].Descriprion</td>
+					<td>@Utility.GetLastChars(Model[i].ConcurrencyToken)</td>
+					<td><a class="btn small" asp-area="" asp-controller="Product" asp-action="Index" asp-route-productId="@Model[i].Id" role="button">Подробно</a></td>
+					<td><a class="btn small" asp-area="Admin" asp-controller="Product" asp-action="Edit" asp-route-productId="@Model[i].Id" role="button">Редактировать</a></td>
+					<td><a class="btn small" asp-area="Admin" asp-controller="Product" asp-action="Delete" asp-route-productId="@Model[i].Id" role="button">Удалить</a></td>
+				</tr>
+                }
+            </tbody>
+        </table>
+        <div class="text-center">
+            <a class="btn btn-success" asp-area="Admin" asp-controller="Product" asp-action="Add" role="button">Добавить</a>
+        </div>
+    
+    </div>
+</div>

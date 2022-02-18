@@ -1,0 +1,27 @@
+﻿@model ProductViewModel 
+
+@{
+    ViewData["Title"] = "View";
+}
+
+<div class="row">
+    <div class="col-3">
+        <img class="card-img-left" src="@Model.ImagePath" />
+    </div>
+    <div class="col-5">
+        <h1>@Model.Name</h1>
+
+        <p></p>
+        <h5>@Model.Descriprion</h5>
+        <p></p>
+        <h5>Стоимость: @Model.Cost грн.</h5>
+
+
+        <a class="btn btn-dark" asp-area="" asp-controller="Cart" asp-action="AddToCart" asp-route-productid="@Model.Id" role="button">Добавить в корзину</a>
+        <a class="btn btn-dark" asp-area="" asp-controller="Home" asp-action="Index" role="button">Продолжить покупки</a>
+
+
+    </div>
+   
+
+</div>

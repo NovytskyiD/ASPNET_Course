@@ -1,0 +1,31 @@
+﻿@model FavoritesViewModel
+
+@{
+    ViewData["Title"] = "View";
+}
+
+<div class="row">
+    @if (Model == null || Model.products.Count == 0)
+    {
+        <h5>Вы еще не добавили товары в избранное:)</h5>
+    }
+    else
+    {
+        @foreach (var product in Model.products)
+        { <div class="col-3 card shadow">
+                <img class="card-img-top" src="@product.ImagePath" />
+                <div class="card-body">
+                    <a style="color:black" asp-area="" asp-controller="Product" asp-action="Index" asp-route-productid="@product.Id"><h5>@product.Name</h5></a>
+                    <h5>@product.Cost грн.</h5>
+                    <div class="text-center">
+                        <a class="btn" asp-area="" asp-controller="Cart" asp-action="AddToCart" asp-route-productid="@product.Id" role="button" title="Добавить в корзину"><i class="fas fa-cart-plus"></i></a>
+                        <a class="btn" asp-area="" asp-controller="Compare" asp-action="Add" asp-route-productid="@product.Id" role="button" title="Сравнить"><i class="fas fa-balance-scale"></i></a>
+                        <a class="btn" asp-area="" asp-controller="Favorites" asp-action="Delete" asp-route-productid="@product.Id" role="button" title="Удалить из избранного"><i class="fas fa-heart"></i></a>
+                    </div>
+                </div>
+
+            </div>
+            }
+        }
+
+</div>

@@ -1,0 +1,38 @@
+﻿@model OrderViewModel
+    <form method="post">
+        <div class="row">
+            <div class="col-6">
+                <table class="table">
+                    <tr>
+                        <td>Дата и время оформления</td>
+                        <td>@Model.CreateTime.ToShortDateString() в @Model.CreateTime.ToShortTimeString()</td>
+                    </tr>
+                    <tr>
+                        <td>Адрес доставки</td>
+                        <td>@Model.OrderShippingDetails.Adress</td>
+                    </tr>
+                    <tr>
+                        <td>Получатель</td>
+                        <td>@Model.OrderShippingDetails.FirstName @Model.OrderShippingDetails.LastName</td>
+                    </tr>
+                    <tr>
+                        <td>Телефон</td>
+                        <td>@Model.OrderShippingDetails.Phone</td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td>@Model.OrderShippingDetails.Email</td>
+                    </tr>
+                    <tr>
+                        <td>Сума заказа</td>
+                        <td>@Model.Cost</td>
+                    </tr>
+                    <tr>
+                        <td>Статус</td>
+                        <td><select asp-for="@Model.OrderState" asp-items="@Html.GetEnumSelectList<OrderStatesViewModel>()" class="form-control"></select></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <button class="btn btn-success" type="submit" asp-area="Admin" asp-controller="Order" asp-action="Edit" asp-route-orderID="@Model.Id">Сохранить</button>
+    </form>

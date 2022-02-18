@@ -1,0 +1,41 @@
+﻿@model OnlineShopWeb.Models.UserProfileRegistration
+<form method="post">
+
+    <div class="row text-center">
+        <div class="text-danger font-weight-bold" asp-validation-summary="All"></div>
+        <div class="col">
+            <div>
+                <label asp-for="UserName">Логин (email)</label><br />
+                <input type="text" asp-for="UserName" />
+                <span asp-validation-for="UserName" />
+            </div>
+            <div>
+                <label asp-for="Password">Пароль</label><br />
+                <input type="text" asp-for="Password" />
+                <span asp-validation-for="Password" />
+            </div>
+            <div>
+                <label asp-for="PasswordConfirmation">Повторите пароль</label><br />
+                <input type="text" asp-for="PasswordConfirmation" />
+                <span asp-validation-for="PasswordConfirmation" />
+            </div>
+            <div>
+                <label asp-for="FirstName">Имя</label><br />
+                <input type="text" asp-for="FirstName" />
+                <span asp-validation-for="FirstName" />
+            </div>
+            <div>
+                <label asp-for="LastName">Фамилия</label><br />
+                <input type="text" asp-for="LastName" />
+                <span asp-validation-for="LastName" />
+            </div>
+            <div>
+                <label asp-for="Phone">Телефон</label><br />
+                <input type="text" asp-for="Phone" />
+                <span asp-validation-for="Phone" />
+            </div>
+            <br />
+            <button class="btn btn-success" type="submit" asp-area="Admin" asp-controller="User" asp-action="Add">Сохранить</button>
+        </div>
+    </div>
+</form>

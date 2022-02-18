@@ -1,0 +1,38 @@
+﻿@model OnlineShopWeb.Models.OrderShippingDetails
+<form method="post">
+    
+    <div class="form-row">
+        
+        <div class="form-group col-md-6">
+            <div class="text-danger font-weight-bold" asp-validation-summary="All"></div>
+            <div>
+                <label asp-for="Email">Email</label><br />
+                <input type="text" asp-for="Email" />
+                <span asp-validation-for="Email" />
+            </div>
+
+            <div>
+                <label asp-for="Adress">Адрес</label><br />
+                <input type="text" asp-for="Adress" />
+                <span asp-validation-for="Adress" />
+            </div>
+            <div>
+                <label asp-for="FirstName">Имя</label><br />
+                <input type="text" asp-for="FirstName" />
+                <span asp-validation-for="FirstName" />
+            </div>
+            <div>
+                <label asp-for="LastName">Фамилия</label><br />
+                <input type="text" asp-for="LastName" />
+                <span asp-validation-for="LastName" />
+            </div>
+            <div>
+                <label asp-for="Phone">Телефон</label><br />
+                <input type="text" asp-for="Phone" />
+                <span asp-validation-for="Phone" />
+            </div>
+            <button type="submit" class="btn btn-primary">Подтвердить</button>
+        </div>
+    </div>
+    
+</form>
